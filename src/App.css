@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body,
+body * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    box-sizing: border-box;
+}
+
+p {
+    font-size: 16px;
+    margin: 0;
+}
+
+h1 {
+    font-size: 42px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+::placeholder {
+    color: #f8f8f8;
+}
+
+.app {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+
+.app:before {
+    content: '';
+    background: url('./assets/nature.jpg') no-repeat center center/cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    max-width: 300px;
+    width: auto;
+    height: 90%;
+    margin: 0 auto;
+    padding: 0 16px;
+    position: relative;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container.initial {
+    justify-content: center;
+}
+
+.app .search {
+    text-align: center;
+    padding: 16px 0;
+}
+
+.app input {
+    padding: 8px 24px;
+    font-size: 12px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 100%;
+}
+
+.app .wish {
+    font-weight: 300;
+}
+.app .wish p {
+    font-size: 16px;
+}
+
+.app .top {
+    text-align: center;
+}
+
+.app .middle {
+    text-align: center;
+}
+
+.app .bottom {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+        gap: 10px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 16px;
+        border-radius: 12px;
+    }
+    
+    .app .bottom p {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 200;
+    }
+    
+    .app .bottom div p:first-child {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+    }
+    
+    .date-time {
+        display: flex;
+    align-items: center;
+        justify-content: center;
+}
+
+.date-time .circle {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 0 6px;
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        max-width: 700px;
+    }
+
+    .app .search {
+        padding: 16px;
+    }
+
+    .app input {
+        font-size: 20px;
+        width: auto;
+    }
+
+    p {
+        font-size: 22px;
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 96px;
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 75px;
+    }
+
+h3 {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.app .bottom {
+    flex-direction: row;
+    gap: 0;
+}
+.app .bottom div p:first-child {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+}
+}
