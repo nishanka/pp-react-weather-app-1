@@ -1,4 +1,4 @@
-# Project: "Weather App 01 - React"
+# Project: "Weather App 01"
 
 - Type: Web Application
 - Category: Portfolio Project
