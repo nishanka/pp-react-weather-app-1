@@ -61,6 +61,7 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 .container.initial {
@@ -70,16 +71,39 @@ h3 {
 .app .search {
     text-align: center;
     padding: 16px 0;
+    position: relative;
+    }
+    
+    .app .search button {
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        width: 43px;
+        height: 43px;
+        border-radius: 0 25px 25px 0;
+        z-index: 2;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .app .search button:hover {
+        color: chocolate;
 }
 
 .app input {
-    padding: 8px 24px;
+    padding: 8px 64px 8px 24px;
     font-size: 12px;
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.3);
     color: #fff;
     width: 100%;
+    outline: none;
 }
 
 .app .wish {
@@ -98,12 +122,13 @@ h3 {
 }
 
 .app .bottom {
+    /* max-width: 200px; */
     margin: 16px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
         gap: 10px;
-        text-align: center;
+        text-align: left;
         background: rgba(0, 0, 0, 0.7);
         padding: 16px;
         border-radius: 12px;
@@ -136,6 +161,34 @@ h3 {
     margin: 0 6px;
 }
 
+.feels,
+.humidity,
+.wind {
+    position: relative;
+    padding-left: 40px;
+}
+
+.feels::before,
+.humidity::before,
+.wind::before {
+    content: "";
+    width: 26px;
+    height: 26px;
+    background-image: url(./assets/humidity.png);
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    background-size: contain;
+}
+
+.feels::before {
+    background-image: url(./assets/temperature.png);
+}
+
+.wind::before {
+    background-image: url(./assets/wind.png);
+}
 @media only screen and (min-width: 768px) {
     .container {
         max-width: 700px;
@@ -170,12 +223,28 @@ h3 {
 }
 
 .app .bottom {
+    width: 100%;
+        /* max-width: inherit; */
     flex-direction: row;
     gap: 0;
+    text-align: center;
 }
 .app .bottom div p:first-child {
     font-weight: 400;
     font-size: 20px;
     line-height: 20px;
+}
+.feels,
+.humidity,
+.wind {
+    padding-left: 50px;
+}
+
+.feels::before,
+.humidity::before,
+.wind::before {
+    width: 40px;
+    height: 40px;
+    top: 0;
 }
 }

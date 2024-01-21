@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
+import './css/icons.css';
 
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('');
 
+  const API_URL = 'https://api.openweathermap.org';
+  const API_ICONS = 'https://openweathermap.org/img/wn/';
   const API_KEY = 'f1bbbfa5b0acebe0bc420772e7b0e7fb';
   const TEMP_UNITS = 'metric'; //Fahrenheit - units=imperial, Celsius - units=metric, Kelvin - default
   const TEMP_SYMBOL = '°C'; //Fahrenheit - °F
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${TEMP_UNITS}&APPID=${API_KEY}`;
+  const url = `${API_URL}/data/2.5/weather?q=${location}&units=${TEMP_UNITS}&APPID=${API_KEY}`;
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
       axios.get(url).then((response) => {
         setData(response.data);
+        console.log(response.data);
       });
       setLocation('');
     }
@@ -26,6 +30,11 @@ function App() {
     containerClass = 'container';
   } else {
     containerClass = 'container initial';
+  }
+
+  let ICON_URL = '';
+  if (data.weather !== undefined) {
+    ICON_URL = `${API_ICONS}/${data.weather[0].icon}@2x.png`;
   }
 
   return (
@@ -40,6 +49,9 @@ function App() {
               placeholder='Enter Location'
               type='text'
             />
+            <button>
+              <span className='material-symbols-outlined'>search</span>
+            </button>
           </div>
         </div>
         {data.name !== undefined && (
@@ -47,6 +59,9 @@ function App() {
             <div className='middle'>
               <div className='location'>
                 <h3>{data.name}</h3>
+              </div>
+              <div className='image'>
+                <img src={ICON_URL} alt={data.weather[0].main} />
               </div>
               <div className='temp'>
                 {data.main ? (
