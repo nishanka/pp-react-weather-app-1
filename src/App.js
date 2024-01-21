@@ -3,11 +3,15 @@ import axios from 'axios';
 import './App.css';
 import './css/icons.css';
 
-const API_URL = 'https://api.openweathermap.org';
-const API_ICONS = 'https://openweathermap.org/img/wn/';
-const API_KEY = 'f1bbbfa5b0acebe0bc420772e7b0e7fb';
-const TEMP_UNITS = 'metric'; //Fahrenheit - units=imperial, Celsius - units=metric, Kelvin - 3default
-const TEMP_SYMBOL = '°C'; //Fahrenheit - °F
+const API = {
+  KEY: 'f1bbbfa5b0acebe0bc420772e7b0e7fb',
+  BASE: 'https://api.openweathermap.org',
+  ICONS: 'https://openweathermap.org/img/wn/',
+  SETTINGS: {
+    TEMP_UNITS: 'metric', //Fahrenheit - units=imperial, Celsius - units=metric, Kelvin - 3default
+    TEMP_SYMBOL: '°C', //Fahrenheit - °F
+  },
+};
 
 function App() {
   const [data, setData] = useState({
@@ -24,7 +28,7 @@ function App() {
 
   const fetchData = (locationName) => {
     if (locationName !== '') {
-      const url = `${API_URL}/data/2.5/weather?q=${locationName}&units=${TEMP_UNITS}&APPID=${API_KEY}`;
+      const url = `${API.BASE}/data/2.5/weather?q=${locationName}&units=${API.SETTINGS.TEMP_UNITS}&APPID=${API.KEY}`;
       axios
         .get(url)
         .then((response) => {
@@ -61,7 +65,7 @@ function App() {
 
   let ICON_URL = '';
   if (data.icon !== undefined) {
-    ICON_URL = `${API_ICONS}/${data.icon}@2x.png`;
+    ICON_URL = `${API.ICONS}/${data.icon}@2x.png`;
   }
 
   const handleChange = (event) => {
@@ -114,7 +118,7 @@ function App() {
                 {data.temp ? (
                   <h1>
                     {data.temp}
-                    {TEMP_SYMBOL}
+                    {API.TEMP_SYMBOL}
                   </h1>
                 ) : null}
               </div>
@@ -127,7 +131,7 @@ function App() {
                 {data.feelsLike ? (
                   <p>
                     {data.feelsLike}
-                    {TEMP_SYMBOL}
+                    {API.TEMP_SYMBOL}
                   </p>
                 ) : null}
                 <p>Feels Like</p>
