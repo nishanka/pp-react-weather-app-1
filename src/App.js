@@ -3,39 +3,81 @@ import axios from 'axios';
 import './App.css';
 import './css/icons.css';
 
+const API_URL = 'https://api.openweathermap.org';
+const API_ICONS = 'https://openweathermap.org/img/wn/';
+const API_KEY = 'f1bbbfa5b0acebe0bc420772e7b0e7fb';
+const TEMP_UNITS = 'metric'; //Fahrenheit - units=imperial, Celsius - units=metric, Kelvin - 3default
+const TEMP_SYMBOL = '°C'; //Fahrenheit - °F
+
 function App() {
-  const [data, setData] = useState({});
-  const [location, setLocation] = useState('');
+  const [data, setData] = useState({
+    location: 'London',
+    temp: 10,
+    icon: '04d',
+    description: 'Clouds',
+    feelsLike: 8,
+    humidity: 10,
+    windSpeed: 2,
+  });
+  const [locationName, setLocationName] = useState('');
+  const [error, setError] = useState('');
 
-  const API_URL = 'https://api.openweathermap.org';
-  const API_ICONS = 'https://openweathermap.org/img/wn/';
-  const API_KEY = 'f1bbbfa5b0acebe0bc420772e7b0e7fb';
-  const TEMP_UNITS = 'metric'; //Fahrenheit - units=imperial, Celsius - units=metric, Kelvin - default
-  const TEMP_SYMBOL = '°C'; //Fahrenheit - °F
-
-  const url = `${API_URL}/data/2.5/weather?q=${location}&units=${TEMP_UNITS}&APPID=${API_KEY}`;
-
-  const searchLocation = (event) => {
-    if (event.key === 'Enter') {
-      axios.get(url).then((response) => {
-        setData(response.data);
-        console.log(response.data);
-      });
-      setLocation('');
+  const fetchData = (locationName) => {
+    if (locationName !== '') {
+      const url = `${API_URL}/data/2.5/weather?q=${locationName}&units=${TEMP_UNITS}&APPID=${API_KEY}`;
+      axios
+        .get(url)
+        .then((response) => {
+          setData({
+            // ...data,
+            location: response.data.name,
+            temp: response.data.main.temp.toFixed(),
+            icon: response.data.weather[0].icon,
+            description: response.data.weather[0].main,
+            feelsLike: response.data.main.feels_like.toFixed(),
+            humidity: response.data.main.humidity,
+            windSpeed: response.data.wind.speed.toFixed(),
+          });
+          setError('');
+        })
+        .catch((err) => {
+          if (err.response.status === 404) {
+            setError('Invalid City Name');
+          } else {
+            setError('Something went wrong');
+          }
+        });
+    } else {
+      setError('Location is empty!');
     }
   };
 
   let containerClass;
-  if (data.name !== undefined) {
+  if (data.location !== undefined) {
     containerClass = 'container';
   } else {
     containerClass = 'container initial';
   }
 
   let ICON_URL = '';
-  if (data.weather !== undefined) {
-    ICON_URL = `${API_ICONS}/${data.weather[0].icon}@2x.png`;
+  if (data.icon !== undefined) {
+    ICON_URL = `${API_ICONS}/${data.icon}@2x.png`;
   }
+
+  const handleChange = (event) => {
+    setLocationName(event.target.value);
+    setError('');
+  };
+
+  const handleClick = () => {
+    fetchData(locationName);
+  };
+
+  const handleKeydown = (event) => {
+    if (event.key === 'Enter') {
+      fetchData(locationName);
+    }
+  };
 
   return (
     <div className='app'>
@@ -43,54 +85,59 @@ function App() {
         <div className='top'>
           <div className='search'>
             <input
-              value={location}
-              onChange={(event) => setLocation(event.target.value)}
-              onKeyDown={searchLocation}
+              value={locationName}
+              onChange={handleChange}
+              onKeyDown={handleKeydown}
               placeholder='Enter Location'
               type='text'
             />
-            <button>
+            <button onClick={handleClick}>
               <span className='material-symbols-outlined'>search</span>
             </button>
           </div>
+          {error && (
+            <div className='error'>
+              <p>{error}</p>
+            </div>
+          )}
         </div>
-        {data.name !== undefined && (
+        {data.location !== undefined && (
           <>
             <div className='middle'>
               <div className='location'>
-                <h3>{data.name}</h3>
+                <h3>{data.location}</h3>
               </div>
               <div className='image'>
-                <img src={ICON_URL} alt={data.weather[0].main} />
+                <img src={ICON_URL} alt={data.description} />
               </div>
               <div className='temp'>
-                {data.main ? (
+                {data.temp ? (
                   <h1>
-                    {data.main.temp.toFixed()}
+                    {data.temp}
                     {TEMP_SYMBOL}
                   </h1>
                 ) : null}
               </div>
               <div className='description'>
-                {data.weather ? <p>{data.weather[0].main}</p> : null}
+                {data.description ? <p>{data.description}</p> : null}
               </div>
             </div>
             <div className='bottom'>
               <div className='feels'>
-                {data.main ? (
+                {data.feelsLike ? (
                   <p>
-                    {data.main.feels_like.toFixed()}
+                    {data.feelsLike}
                     {TEMP_SYMBOL}
                   </p>
                 ) : null}
                 <p>Feels Like</p>
               </div>
               <div className='humidity'>
-                {data.main ? <p>{data.main.humidity}%</p> : null}
+                {data.humidity ? <p>{data.humidity}%</p> : null}
                 <p>Humidity</p>
               </div>
               <div className='wind'>
-                {data.wind ? <p>{data.wind.speed.toFixed()} MPH</p> : null}
+                {data.windSpeed ? <p>{data.windSpeed} MPH</p> : null}
                 <p>Wind Speed</p>
               </div>
             </div>
