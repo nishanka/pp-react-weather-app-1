@@ -95,9 +95,7 @@ function App() {
               placeholder='Enter Location'
               type='text'
             />
-            <button onClick={handleClick}>
-              <span className='material-symbols-outlined'>search</span>
-            </button>
+            <button onClick={handleClick}></button>
           </div>
           {error && (
             <div className='error'>

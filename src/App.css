@@ -77,13 +77,13 @@ h3 {
     }
     
     .app .search button {
-        background: rgba(255, 255, 255, 0.8);
+        background: url('./assets/search.svg') no-repeat center center rgba(255, 255, 255, 0.8);
         border: none;
         position: absolute;
         right: 0;
         top: 16px;
         width: 33px;
-            height: 33px;
+        height: 33px;
         border-radius: 0 25px 25px 0;
         z-index: 2;
         cursor: pointer;
@@ -94,7 +94,7 @@ h3 {
     }
     
     .app .search button:hover {
-        color: chocolate;
+        opacity: 0.6;
 }
 
 .app .error p {
