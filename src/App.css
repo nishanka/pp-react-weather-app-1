@@ -70,40 +70,12 @@ h3 {
     justify-content: center;
 }
 
-.app .search {
+.search {
     text-align: center;
-    padding: 16px 0;
     position: relative;
-    }
-    
-    .app .search button {
-        background: url('./assets/search.svg') no-repeat center center rgba(255, 255, 255, 0.8);
-        border: none;
-        position: absolute;
-        right: 0;
-        top: 16px;
-        width: 33px;
-        height: 33px;
-        border-radius: 0 25px 25px 0;
-        z-index: 2;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .app .search button:hover {
-        opacity: 0.6;
 }
-
-.app .error p {
-    color: crimson;
-    font-size: 18px;
-    font-weight: 400;
-    text-shadow: 1px 1px 1px black;
-}
-.app input {
+    
+.search input {
     padding: 8px 44px 8px 14px;
     font-size: 12px;
     border-radius: 25px;
@@ -112,52 +84,81 @@ h3 {
     color: #fff;
     width: 100%;
     outline: none;
+    /* transition: all 0.3s ease-in-out; */
 }
 
-.app .wish {
+.search button {
+    background: url('./assets/search.svg') no-repeat center center rgba(255, 255, 255, 0.8);
+    background-size: 18px 18px;
+    border: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 33px;
+        height: 33px;
+        border-radius: 0 25px 25px 0;
+        z-index: 2;
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+.search button:hover {
+    opacity: 0.6;
+}
+
+.error p {
+    color: crimson;
+    font-size: 18px;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px black;
+}
+
+.wish {
     font-weight: 300;
 }
-.app .wish p {
+.wish p {
     font-size: 16px;
 }
 
-.app .top {
+.top {
     text-align: center;
 }
 
-.app .middle {
+.middle {
     text-align: center;
 }
 
-.app .bottom {
+.bottom {
     /* max-width: 200px; */
     margin: 16px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-        gap: 10px;
+    gap: 10px;
         text-align: left;
         background: rgba(0, 0, 0, 0.7);
         padding: 16px;
         border-radius: 12px;
     }
+.bottom p {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 200;
+}
     
-    .app .bottom p {
-        font-size: 14px;
-        line-height: 20px;
-        font-weight: 200;
-    }
-    
-    .app .bottom div p:first-child {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 16px;
-    }
-    
-    .date-time {
-        display: flex;
+.bottom div p:first-child {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.date-time {
+    display: flex;
     align-items: center;
-        justify-content: center;
+    justify-content: center;
 }
 
 .date-time .circle {
@@ -203,16 +204,13 @@ h3 {
         max-width: 700px;
     }
 
-    .app .search {
-        padding: 16px;
-    }
-
-.app .search button {
-    width: 43px;
-    height: 43px;
-    right: 16px;
-}
-    .app input {
+                                .search button {
+                                    width: 43px;
+                                    height: 43px;
+        right: 0;
+            background-size: 33px 26px;
+        }
+                                .search input {
         font-size: 20px;
         width: auto;
         padding: 8px 64px 8px 24px;
@@ -232,34 +230,35 @@ h3 {
         font-size: 75px;
     }
 
-h3 {
-    font-size: 50px;
-    font-weight: 600;
-}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                h3 {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    font-size: 50px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    font-weight: 600;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 
-.app .bottom {
-    width: 100%;
-        /* max-width: inherit; */
-    flex-direction: row;
-    gap: 0;
-    text-align: center;
-}
-.app .bottom div p:first-child {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .bottom {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    width: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    /* max-width: inherit; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    flex-direction: row;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    gap: 0;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    text-align: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+.bottom div p:first-child {
     font-weight: 400;
     font-size: 20px;
     line-height: 20px;
 }
-.feels,
-.humidity,
-.wind {
-    padding-left: 50px;
-}
 
-.feels::before,
-.humidity::before,
-.wind::before {
-    width: 40px;
-    height: 40px;
-    top: 0;
-}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .feels,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .humidity,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .wind {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: 50px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .feels::before,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .humidity::before,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .wind::before {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    width: 40px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    height: 40px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    top: 0;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
