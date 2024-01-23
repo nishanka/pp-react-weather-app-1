@@ -57,8 +57,8 @@ function App() {
   };
 
   let containerClass;
-  console.log(typeof data.location);
-  console.log(data);
+  // console.log(typeof data.location);
+  // console.log(data);
   if (data.location !== '' && data.location !== undefined) {
     containerClass = 'container';
   } else {
@@ -77,11 +77,13 @@ function App() {
 
   const handleClick = () => {
     fetchData(locationName);
+    setLocationName('');
   };
 
   const handleKeydown = (event) => {
     if (event.key === 'Enter') {
       fetchData(locationName);
+      setLocationName('');
     }
   };
 

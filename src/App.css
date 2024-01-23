@@ -2,263 +2,296 @@
 
 body,
 body * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Outfit', sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  box-sizing: border-box;
 }
 
 p {
-    font-size: 16px;
-    margin: 0;
+  font-size: 16px;
+  margin: 0;
 }
 
 h1 {
-    font-size: 42px;
-    margin: 0;
+  font-size: 42px;
+  margin: 0;
 }
 
 h2 {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 h3 {
-    font-size: 24px;
-    font-weight: 500;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 ::placeholder {
-    color: #f8f8f8;
+  color: #f8f8f8;
 }
 
 .app {
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-    position: relative;
-    background: url('./assets/nature.jpg') no-repeat center center/cover fixed;
-    color: #fff;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  background: url('./assets/nature.jpg') no-repeat center center/cover fixed;
+  color: #fff;
 }
 
 .app:before {
-    content: '';
-    /* background: url('./assets/nature.jpg') no-repeat center center/cover; */
-        background-color: rgba(0, 0, 0, 0.4);
-        position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+  content: '';
+  /* background: url('./assets/nature.jpg') no-repeat center center/cover; */
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .container {
-    max-width: 300px;
-    width: auto;
-    min-height: 90%;
-        height: auto;
-    margin: 0 auto;
-    padding: 0 16px;
-    position: relative;
-    top: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 300px;
+  width: auto;
+  min-height: 90%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container.initial {
-    justify-content: center;
+  justify-content: center;
 }
 
 .search {
-    text-align: center;
-    position: relative;
+  text-align: center;
+  position: relative;
 }
-    
+
 .search input {
-    padding: 8px 44px 8px 14px;
-    font-size: 12px;
-    border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.3);
-    color: #fff;
-    width: 100%;
-    outline: none;
-    /* transition: all 0.3s ease-in-out; */
+  padding: 8px 44px 8px 14px;
+  font-size: 12px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  width: 100%;
+  outline: none;
+  /* transition: all 0.3s ease-in-out; */
 }
 
 .search button {
-    background: url('./assets/search.svg') no-repeat center center rgba(255, 255, 255, 0.8);
-    background-size: 18px 18px;
-    border: none;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 33px;
-        height: 33px;
-        border-radius: 0 25px 25px 0;
-        z-index: 2;
-        cursor: pointer;
-        transition: opacity 0.3s ease-in-out;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-.search button:hover {
-    opacity: 0.6;
+  background: url('./assets/search.svg') no-repeat center center
+    rgba(255, 255, 255, 0.8);
+  background-size: 18px 18px;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 33px;
+  height: 33px;
+  border-radius: 0 25px 25px 0;
+  z-index: 2;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.search button:hover {
+  opacity: 0.6;
+}
+
+.error {
+  position: relative;
+  padding-top: 8px;
+}
+
+.error::before {
+  content: '';
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 6px 8px 6px;
+  border-color: transparent transparent #dc143c transparent;
+  transform: rotate(0deg);
+  position: absolute;
+  left: auto;
+  top: 0;
+}
 .error p {
-    color: crimson;
-    font-size: 18px;
-    font-weight: 400;
-    text-shadow: 1px 1px 1px black;
+  background: #dc143c;
+  font-size: 12px;
+  font-weight: 400;
+  text-shadow: 1px 1px 1px black;
+  color: white;
+  padding: 4px;
+  border-radius: 5px;
 }
 
 .wish {
-    font-weight: 300;
+  font-weight: 300;
 }
 .wish p {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .top {
-    text-align: center;
+  text-align: center;
 }
 
 .middle {
-    text-align: center;
+  text-align: center;
 }
 
 .bottom {
-    /* max-width: 200px; */
-    margin: 16px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    gap: 10px;
-        text-align: left;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 16px;
-        border-radius: 12px;
-    }
-.bottom p {
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 200;
+  /* max-width: 200px; */
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 16px;
+  border-radius: 12px;
 }
-    
+.bottom p {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 200;
+}
+
 .bottom div p:first-child {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
 }
 
 .date-time {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .date-time .circle {
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: #fff;
-    margin: 0 6px;
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin: 0 6px;
 }
 
 .feels,
 .humidity,
 .wind {
-    position: relative;
-    padding-left: 40px;
+  position: relative;
+  padding-left: 40px;
 }
 
 .feels::before,
 .humidity::before,
 .wind::before {
-    content: "";
-    width: 26px;
-    height: 26px;
-    background-image: url(./assets/humidity.png);
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    top: 5px;
-    background-size: contain;
+  content: '';
+  width: 26px;
+  height: 26px;
+  background-image: url(./assets/humidity.png);
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 5px;
+  background-size: contain;
 }
 
 .feels::before {
-    background-image: url(./assets/temperature.png);
+  background-image: url(./assets/temperature.png);
 }
 
 .wind::before {
-    background-image: url(./assets/wind.png);
+  background-image: url(./assets/wind.png);
 }
 
 @media only screen and (min-width: 768px) {
-    .container {
-        max-width: 700px;
-    }
+  .container {
+    max-width: 700px;
+  }
 
-                                .search button {
-                                    width: 43px;
-                                    height: 43px;
-        right: 0;
-            background-size: 33px 26px;
-        }
-                                .search input {
-        font-size: 20px;
-        width: auto;
-        padding: 8px 64px 8px 24px;
-    }
+  .search button {
+    width: 43px;
+    height: 43px;
+    right: 0;
+    background-size: 33px 26px;
+  }
+  .search input {
+    font-size: 20px;
+    width: auto;
+    padding: 8px 64px 8px 24px;
+  }
 
-    p {
-        font-size: 22px;
-        margin: 0;
-    }
+  .error {
+    padding-top: 12px;
+  }
 
-    h1 {
-        font-size: 96px;
-        margin: 0;
-    }
+  .error::before {
+    border-width: 0 8px 12px 8px;
+  }
 
-    h2 {
-        font-size: 75px;
-    }
+  .error p {
+    font-size: 18px;
+    padding: 8px;
+  }
+  p {
+    font-size: 22px;
+    margin: 0;
+  }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                h3 {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    font-size: 50px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    font-weight: 600;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+  h1 {
+    font-size: 96px;
+    margin: 0;
+  }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .bottom {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    width: 100%;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    /* max-width: inherit; */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    flex-direction: row;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    gap: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    text-align: center;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
-.bottom div p:first-child {
+  h2 {
+    font-size: 75px;
+  }
+
+  h3 {
+    font-size: 50px;
+    font-weight: 600;
+  }
+
+  .bottom {
+    width: 100%;
+    /* max-width: inherit; */
+    flex-direction: row;
+    gap: 0;
+    text-align: center;
+  }
+  .bottom div p:first-child {
     font-weight: 400;
     font-size: 20px;
     line-height: 20px;
-}
+  }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .feels,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .humidity,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .wind {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: 50px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+  .feels,
+  .humidity,
+  .wind {
+    padding-left: 50px;
+  }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .feels::before,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .humidity::before,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .wind::before {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    width: 40px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    height: 40px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    top: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+  .feels::before,
+  .humidity::before,
+  .wind::before {
+    width: 40px;
+    height: 40px;
+    top: 0;
+  }
 }
