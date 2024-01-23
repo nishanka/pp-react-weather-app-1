@@ -15,13 +15,13 @@ const API = {
 
 function App() {
   const [data, setData] = useState({
-    location: 'London',
-    temp: 10,
-    icon: '04d',
-    description: 'Clouds',
-    feelsLike: 8,
-    humidity: 10,
-    windSpeed: 2,
+    location: '',
+    temp: 0,
+    icon: '',
+    description: '',
+    feelsLike: 0,
+    humidity: 0,
+    windSpeed: 0,
   });
   const [locationName, setLocationName] = useState('');
   const [error, setError] = useState('');
@@ -57,7 +57,9 @@ function App() {
   };
 
   let containerClass;
-  if (data.location !== undefined) {
+  console.log(typeof data.location);
+  console.log(data);
+  if (data.location !== '' && data.location !== undefined) {
     containerClass = 'container';
   } else {
     containerClass = 'container initial';
@@ -103,7 +105,7 @@ function App() {
             </div>
           )}
         </div>
-        {data.location !== undefined && (
+        {data.location !== undefined && data.location !== '' && (
           <>
             <div className='middle'>
               <div className='location'>
@@ -124,25 +126,28 @@ function App() {
                 {data.description ? <p>{data.description}</p> : null}
               </div>
             </div>
-            <div className='bottom'>
-              <div className='feels'>
-                {data.feelsLike ? (
-                  <p>
-                    {data.feelsLike}
-                    {API.TEMP_SYMBOL}
-                  </p>
-                ) : null}
-                <p>Feels Like</p>
+
+            {data.location !== undefined && data.location !== '' && (
+              <div className='bottom'>
+                <div className='feels'>
+                  {data.feelsLike ? (
+                    <p>
+                      {data.feelsLike}
+                      {API.TEMP_SYMBOL}
+                    </p>
+                  ) : null}
+                  <p>Feels Like</p>
+                </div>
+                <div className='humidity'>
+                  {data.humidity ? <p>{data.humidity}%</p> : null}
+                  <p>Humidity</p>
+                </div>
+                <div className='wind'>
+                  {data.windSpeed ? <p>{data.windSpeed} MPH</p> : null}
+                  <p>Wind Speed</p>
+                </div>
               </div>
-              <div className='humidity'>
-                {data.humidity ? <p>{data.humidity}%</p> : null}
-                <p>Humidity</p>
-              </div>
-              <div className='wind'>
-                {data.windSpeed ? <p>{data.windSpeed} MPH</p> : null}
-                <p>Wind Speed</p>
-              </div>
-            </div>
+            )}
           </>
         )}
       </div>
