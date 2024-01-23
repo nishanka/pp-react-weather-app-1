@@ -120,7 +120,7 @@ function App() {
                 {data.temp ? (
                   <h1>
                     {data.temp}
-                    {API.TEMP_SYMBOL}
+                    {API.SETTINGS.TEMP_SYMBOL}
                   </h1>
                 ) : null}
               </div>
@@ -135,7 +135,7 @@ function App() {
                   {data.feelsLike ? (
                     <p>
                       {data.feelsLike}
-                      {API.TEMP_SYMBOL}
+                      {API.SETTINGS.TEMP_SYMBOL}
                     </p>
                   ) : null}
                   <p>Feels Like</p>
