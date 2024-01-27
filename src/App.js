@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import './css/icons.css';
+import BlockContainer from './components/UI/BlockContainer';
 
 const API = {
   KEY: 'f1bbbfa5b0acebe0bc420772e7b0e7fb',
@@ -15,7 +16,8 @@ const API = {
 
 function App() {
   const [data, setData] = useState({
-    location: '',
+    city: '',
+    country: '',
     temp: 0,
     icon: '',
     description: '',
@@ -23,20 +25,22 @@ function App() {
     humidity: 0,
     windSpeed: 0,
   });
-  const [locationName, setLocationName] = useState('');
+  const [enteredCity, setEnteredCity] = useState('');
   const [error, setError] = useState('');
 
-  const fetchData = (locationName) => {
-    if (locationName !== '') {
-      const url = `${API.BASE}/data/2.5/weather?q=${locationName}&units=${API.SETTINGS.TEMP_UNITS}&APPID=${API.KEY}`;
+  const fetchData = (enteredCity) => {
+    if (enteredCity !== '') {
+      const url = `${API.BASE}/data/2.5/weather?q=${enteredCity}&units=${API.SETTINGS.TEMP_UNITS}&APPID=${API.KEY}`;
       axios
         .get(url)
         .then((response) => {
           setData({
             // ...data,
-            location: response.data.name,
+            city: response.data.name,
+            country: response.data.sys.country,
             temp: response.data.main.temp.toFixed(),
             icon: response.data.weather[0].icon,
+            // description: response.data.weather[0].description,
             description: response.data.weather[0].main,
             feelsLike: response.data.main.feels_like.toFixed(),
             humidity: response.data.main.humidity,
@@ -52,14 +56,12 @@ function App() {
           }
         });
     } else {
-      setError('Location is empty!');
+      setError('City is empty!');
     }
   };
 
   let containerClass;
-  // console.log(typeof data.location);
-  // console.log(data);
-  if (data.location !== '' && data.location !== undefined) {
+  if (data.city !== '' && data.city !== undefined) {
     containerClass = 'container';
   } else {
     containerClass = 'container initial';
@@ -71,29 +73,29 @@ function App() {
   }
 
   const handleChange = (event) => {
-    setLocationName(event.target.value);
+    setEnteredCity(event.target.value);
     setError('');
   };
 
   const handleClick = () => {
-    fetchData(locationName);
-    setLocationName('');
+    fetchData(enteredCity);
+    setEnteredCity('');
   };
 
   const handleKeydown = (event) => {
     if (event.key === 'Enter') {
-      fetchData(locationName);
-      setLocationName('');
+      fetchData(enteredCity);
+      setEnteredCity('');
     }
   };
 
   return (
     <div className='app'>
       <div className={containerClass}>
-        <div className='top'>
+        <BlockContainer className='top'>
           <div className='search'>
             <input
-              value={locationName}
+              value={enteredCity}
               onChange={handleChange}
               onKeyDown={handleKeydown}
               placeholder='Enter Location'
@@ -106,12 +108,15 @@ function App() {
               <p>{error}</p>
             </div>
           )}
-        </div>
-        {data.location !== undefined && data.location !== '' && (
+        </BlockContainer>
+
+        {data.city !== undefined && data.city !== '' && (
           <>
-            <div className='middle'>
+            <BlockContainer className='middle'>
               <div className='location'>
-                <h3>{data.location}</h3>
+                <h3>
+                  {data.city}, {data.country}
+                </h3>
               </div>
               <div className='image'>
                 <img src={ICON_URL} alt={data.description} />
@@ -127,10 +132,10 @@ function App() {
               <div className='description'>
                 {data.description ? <p>{data.description}</p> : null}
               </div>
-            </div>
+            </BlockContainer>
 
-            {data.location !== undefined && data.location !== '' && (
-              <div className='bottom'>
+            {data.city !== undefined && data.city !== '' && (
+              <BlockContainer className='bottom'>
                 <div className='feels'>
                   {data.feelsLike ? (
                     <p>
@@ -148,7 +153,7 @@ function App() {
                   {data.windSpeed ? <p>{data.windSpeed} MPH</p> : null}
                   <p>Wind Speed</p>
                 </div>
-              </div>
+              </BlockContainer>
             )}
           </>
         )}
