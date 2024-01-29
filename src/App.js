@@ -56,7 +56,7 @@ function App() {
           }
         });
     } else {
-      setError('City is empty!');
+      setError('Location is empty!');
     }
   };
 
