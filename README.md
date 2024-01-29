@@ -8,6 +8,19 @@
 - Axios
 - Open Weather Map API (https://openweathermap.org/api)
 
+### Funcionalities
+- Search for Specific Location Weather
+
+### What You can...
+- View Weather Data for that location 
+    - Location
+    - Temperature
+    - Weather Image
+    - Description
+    - Feels Like
+    - Humidity
+    - Wind Speed
+
 ### Used Hooks
 - `useState`
 
